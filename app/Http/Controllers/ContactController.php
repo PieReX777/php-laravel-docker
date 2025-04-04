@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -19,13 +21,14 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:255',
             'email' => 'nullable|email',
-            'phone' => 'nullable',
-            'address' => 'nullable',
+            'phone' => 'nullable|string',
+            'address' => 'nullable|string',
         ]);
 
         Contact::create($request->all());
+
         return redirect()->route('contacts.index');
     }
 
@@ -42,19 +45,21 @@ class ContactController extends Controller
     public function update(Request $request, Contact $contact)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:255',
             'email' => 'nullable|email',
-            'phone' => 'nullable',
-            'address' => 'nullable',
+            'phone' => 'nullable|string',
+            'address' => 'nullable|string',
         ]);
 
         $contact->update($request->all());
+
         return redirect()->route('contacts.index');
     }
 
     public function destroy(Contact $contact)
     {
         $contact->delete();
+
         return redirect()->route('contacts.index');
     }
 }

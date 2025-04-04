@@ -4,14 +4,14 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
-// Redirige al dashboard (o contactos) en lugar de la página de bienvenida
+// Página de inicio
 Route::get('/', function () {
-    return redirect()->route('dashboard'); // Redirige al dashboard después de login
+    return view('welcome');
 });
 
 // Dashboard (solo accesible por usuarios autenticados)
 Route::get('/dashboard', function () {
-    return view('dashboard'); // Aquí puedes modificar la vista según lo necesites
+    return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Rutas de perfil, solo accesibles para usuarios autenticados
