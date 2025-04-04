@@ -22,14 +22,34 @@
                 height: 100vh;
                 background-color: #FDFDFC;
                 color: #1b1b18;
+                flex-direction: column;
             }
             h1 {
                 font-size: 3rem;
                 text-align: center;
             }
+            .button {
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: white;
+                font-size: 1rem;
+                text-align: center;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 20px;
+            }
+            .button:hover {
+                background-color: #45a049;
+            }
         </style>
     </head>
     <body>
         <h1>Hola Mundo desde Laravel 12, de Joaquin Zea Burga</h1>
+
+        <!-- Botón de Login -->
+        <a href="{{ route('login') }}">
+            <button class="button">Iniciar sesión</button>
+        </a>
     </body>
 </html>
